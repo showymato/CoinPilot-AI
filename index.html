@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en" data-color-scheme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoinPilot AI - Crypto Trading Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Live Price Ticker -->
+        <div class="price-ticker">
+            <div class="ticker-content">
+                <span class="ticker-item">BTC: $122,079.60 <span class="positive">+2.37%</span></span>
+                <span class="ticker-item">ETH: $4,326.44 <span class="positive">+1.80%</span></span>
+                <span class="ticker-item">SOL: $195.50 <span class="positive">+8.5%</span></span>
+                <span class="ticker-item">ADA: $0.68 <span class="negative">-0.44%</span></span>
+                <span class="ticker-item">AVAX: $45.20 <span class="positive">+3.4%</span></span>
+                <span class="ticker-item">MATIC: $1.12 <span class="positive">+2.1%</span></span>
+                <span class="ticker-item">DOT: $8.90 <span class="negative">-1.2%</span></span>
+                <span class="ticker-item">LINK: $28.40 <span class="positive">+4.8%</span></span>
+            </div>
+        </div>
+
+        <div class="main-layout">
+            <!-- Sidebar Navigation -->
+            <nav class="sidebar">
+                <div class="sidebar-header">
+                    <h1 class="logo">CoinPilot AI</h1>
+                    <div class="current-time" id="current-time">Aug 11, 2025 10:00 AM IST</div>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#dashboard" class="nav-link active" data-view="dashboard">Dashboard</a></li>
+                    <li><a href="#recommendations" class="nav-link" data-view="recommendations">AI Recommendations</a></li>
+                    <li><a href="#screener" class="nav-link" data-view="screener">Smart Screener</a></li>
+                    <li><a href="#news" class="nav-link" data-view="news">News & Sentiment</a></li>
+                    <li><a href="#chat" class="nav-link" data-view="chat">AI Assistant</a></li>
+                    <li><a href="#portfolio" class="nav-link" data-view="portfolio">Portfolio</a></li>
+                    <li><a href="#signals" class="nav-link" data-view="signals">Trading Signals</a></li>
+                </ul>
+            </nav>
+
+            <!-- Main Content Area -->
+            <main class="content">
+                <!-- Dashboard View -->
+                <div id="dashboard-view" class="view active">
+                    <header class="content-header">
+                        <h2>Market Overview</h2>
+                        <div class="market-pulse">
+                            <span class="pulse-indicator very-bullish"></span>
+                            <span>Market Pulse: VERY BULLISH</span>
+                        </div>
+                    </header>
+
+                    <div class="dashboard-grid">
+                        <!-- Market Overview Cards -->
+                        <div class="market-cards">
+                            <div class="metric-card">
+                                <h3>Total Market Cap</h3>
+                                <p class="metric-value">$4.1T</p>
+                                <span class="metric-change positive">+5.2%</span>
+                            </div>
+                            <div class="metric-card">
+                                <h3>BTC Dominance</h3>
+                                <p class="metric-value">59.1%</p>
+                                <span class="metric-change positive">+1.3%</span>
+                            </div>
+                            <div class="metric-card">
+                                <h3>Fear & Greed</h3>
+                                <p class="metric-value">78</p>
+                                <span class="metric-label extreme-greed">Extreme Greed</span>
+                            </div>
+                            <div class="metric-card">
+                                <h3>24h Volume</h3>
+                                <p class="metric-value">$125B</p>
+                                <span class="metric-change positive">+15.8%</span>
+                            </div>
+                        </div>
+
+                        <!-- Gainers/Losers -->
+                        <div class="gainers-losers">
+                            <div class="card">
+                                <h3>Top Gainers</h3>
+                                <div class="crypto-list">
+                                    <div class="crypto-item">
+                                        <span class="symbol">SOL</span>
+                                        <span class="price">$195.50</span>
+                                        <span class="change positive">+8.5%</span>
+                                    </div>
+                                    <div class="crypto-item">
+                                        <span class="symbol">LINK</span>
+                                        <span class="price">$28.40</span>
+                                        <span class="change positive">+4.8%</span>
+                                    </div>
+                                    <div class="crypto-item">
+                                        <span class="symbol">AVAX</span>
+                                        <span class="price">$45.20</span>
+                                        <span class="change positive">+3.4%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <h3>Top Losers</h3>
+                                <div class="crypto-list">
+                                    <div class="crypto-item">
+                                        <span class="symbol">DOT</span>
+                                        <span class="price">$8.90</span>
+                                        <span class="change negative">-1.2%</span>
+                                    </div>
+                                    <div class="crypto-item">
+                                        <span class="symbol">ADA</span>
+                                        <span class="price">$0.68</span>
+                                        <span class="change negative">-0.44%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- AI Quick Recommendations -->
+                        <div class="quick-recommendations">
+                            <div class="card">
+                                <h3>AI Quick Picks</h3>
+                                <div class="recommendation-item">
+                                    <span class="symbol">BTC</span>
+                                    <span class="action strong-buy">STRONG BUY</span>
+                                    <span class="confidence">94%</span>
+                                </div>
+                                <div class="recommendation-item">
+                                    <span class="symbol">ETH</span>
+                                    <span class="action buy">BUY</span>
+                                    <span class="confidence">88%</span>
+                                </div>
+                                <div class="recommendation-item">
+                                    <span class="symbol">SOL</span>
+                                    <span class="action strong-buy">STRONG BUY</span>
+                                    <span class="confidence">92%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Recommendations View -->
+                <div id="recommendations-view" class="view">
+                    <header class="content-header">
+                        <h2>AI Recommendations</h2>
+                        <select class="form-control symbol-selector">
+                            <option value="BTC">Bitcoin (BTC)</option>
+                            <option value="ETH">Ethereum (ETH)</option>
+                            <option value="SOL">Solana (SOL)</option>
+                            <option value="ADA">Cardano (ADA)</option>
+                            <option value="AVAX">Avalanche (AVAX)</option>
+                            <option value="LINK">Chainlink (LINK)</option>
+                        </select>
+                    </header>
+
+                    <div class="recommendation-details">
+                        <div class="recommendation-card">
+                            <div class="rec-header">
+                                <h3 id="rec-symbol">BTC</h3>
+                                <div class="rec-action">
+                                    <span class="action-badge strong-buy" id="rec-action">STRONG BUY</span>
+                                    <span class="confidence-score" id="rec-confidence">94%</span>
+                                </div>
+                            </div>
+                            
+                            <div class="rec-details">
+                                <div class="price-info">
+                                    <span class="current-price" id="rec-price">$122,079.60</span>
+                                    <span class="risk-level medium" id="rec-risk">MEDIUM-HIGH RISK</span>
+                                </div>
+                                
+                                <div class="price-targets">
+                                    <h4>Price Targets</h4>
+                                    <div class="targets-grid">
+                                        <div class="target">
+                                            <span class="target-label">Short Term</span>
+                                            <span class="target-price" id="target-short">$125,000</span>
+                                        </div>
+                                        <div class="target">
+                                            <span class="target-label">Medium Term</span>
+                                            <span class="target-price" id="target-medium">$135,000</span>
+                                        </div>
+                                        <div class="target">
+                                            <span class="target-label">Long Term</span>
+                                            <span class="target-price" id="target-long">$150,000</span>
+                                        </div>
+                                    </div>
+                                    <div class="stop-loss">
+                                        <span>Stop Loss: <span id="stop-loss">$115,000</span></span>
+                                    </div>
+                                </div>
+
+                                <div class="reasoning">
+                                    <h4>AI Reasoning</h4>
+                                    <div class="reasoning-factors">
+                                        <div class="factor">
+                                            <span class="factor-label">Technical</span>
+                                            <span class="factor-text" id="technical-reason">Breaking all-time highs above $120K resistance</span>
+                                        </div>
+                                        <div class="factor">
+                                            <span class="factor-label">Fundamental</span>
+                                            <span class="factor-text" id="fundamental-reason">Massive institutional adoption and ETF inflows</span>
+                                        </div>
+                                        <div class="factor">
+                                            <span class="factor-label">Sentiment</span>
+                                            <span class="factor-text" id="sentiment-reason">Extreme bullish sentiment, FOMO driving prices</span>
+                                        </div>
+                                        <div class="factor">
+                                            <span class="factor-label">On-Chain</span>
+                                            <span class="factor-text" id="onchain-reason">Whale accumulation at record levels</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Smart Screener View -->
+                <div id="screener-view" class="view">
+                    <header class="content-header">
+                        <h2>Smart Screener</h2>
+                        <div class="screener-filters">
+                            <select class="form-control">
+                                <option>All Risk Levels</option>
+                                <option>Low Risk</option>
+                                <option>Medium Risk</option>
+                                <option>High Risk</option>
+                            </select>
+                            <select class="form-control">
+                                <option>All Confidence</option>
+                                <option>90%+ Confidence</option>
+                                <option>80%+ Confidence</option>
+                                <option>70%+ Confidence</option>
+                            </select>
+                            <select class="form-control">
+                                <option>1D Timeframe</option>
+                                <option>1H Timeframe</option>
+                                <option>4H Timeframe</option>
+                                <option>1W Timeframe</option>
+                            </select>
+                        </div>
+                    </header>
+
+                    <div class="screener-table">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Symbol</th>
+                                    <th>Price</th>
+                                    <th>24h Change</th>
+                                    <th>AI Score</th>
+                                    <th>Action</th>
+                                    <th>Reasoning</th>
+                                    <th>Whale Activity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>BTC</strong></td>
+                                    <td>$122,079.60</td>
+                                    <td class="positive">+2.37%</td>
+                                    <td><span class="score high">94</span></td>
+                                    <td><span class="action-badge strong-buy">STRONG BUY</span></td>
+                                    <td>Breaking all-time highs, institutional buying</td>
+                                    <td><span class="whale-indicator high">🐋 EXTREME</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>SOL</strong></td>
+                                    <td>$195.50</td>
+                                    <td class="positive">+8.5%</td>
+                                    <td><span class="score high">92</span></td>
+                                    <td><span class="action-badge strong-buy">STRONG BUY</span></td>
+                                    <td>Massive momentum + ecosystem growth</td>
+                                    <td><span class="whale-indicator high">🐋 HIGH</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ETH</strong></td>
+                                    <td>$4,326.44</td>
+                                    <td class="positive">+1.80%</td>
+                                    <td><span class="score high">88</span></td>
+                                    <td><span class="action-badge buy">BUY</span></td>
+                                    <td>Following BTC rally, strong fundamentals</td>
+                                    <td><span class="whale-indicator medium">🐋 MED</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>LINK</strong></td>
+                                    <td>$28.40</td>
+                                    <td class="positive">+4.8%</td>
+                                    <td><span class="score medium">82</span></td>
+                                    <td><span class="action-badge buy">BUY</span></td>
+                                    <td>DeFi recovery + oracle demand surge</td>
+                                    <td><span class="whale-indicator medium">🐋 MED</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- News & Sentiment View -->
+                <div id="news-view" class="view">
+                    <header class="content-header">
+                        <h2>Latest Crypto News</h2>
+                        <div class="sentiment-gauge">
+                            <span>Market Sentiment:</span>
+                            <span class="sentiment-score very-bullish">VERY BULLISH (78%)</span>
+                        </div>
+                    </header>
+
+                    <div class="news-content">
+                        <div class="news-filters">
+                            <button class="btn btn--secondary active">All</button>
+                            <button class="btn btn--secondary">Market</button>
+                            <button class="btn btn--secondary">Regulation</button>
+                            <button class="btn btn--secondary">Technology</button>
+                        </div>
+
+                        <div class="news-feed">
+                            <article class="news-item">
+                                <div class="news-header">
+                                    <h3>Bitcoin Breaks Above $122K, New All-Time High Incoming</h3>
+                                    <span class="sentiment-badge very-bullish">VERY BULLISH</span>
+                                </div>
+                                <p class="news-summary">Bitcoin has surged past $122,000 as institutional demand reaches fever pitch. Major investment firms are increasing allocations amid massive ETF inflows exceeding $5B this week alone.</p>
+                                <div class="news-meta">
+                                    <span class="source">CoinDesk</span>
+                                    <span class="impact-score">Impact: <strong>Extreme</strong></span>
+                                    <span class="timestamp">1 hour ago</span>
+                                </div>
+                            </article>
+
+                            <article class="news-item">
+                                <div class="news-header">
+                                    <h3>Crypto Market Cap Surpasses $4.1 Trillion for First Time</h3>
+                                    <span class="sentiment-badge bullish">BULLISH</span>
+                                </div>
+                                <p class="news-summary">The total cryptocurrency market capitalization has reached a historic milestone of $4.1 trillion, driven by Bitcoin's rally and renewed institutional adoption across major cryptocurrencies.</p>
+                                <div class="news-meta">
+                                    <span class="source">Bloomberg</span>
+                                    <span class="impact-score">Impact: <strong>High</strong></span>
+                                    <span class="timestamp">2 hours ago</span>
+                                </div>
+                            </article>
+
+                            <article class="news-item">
+                                <div class="news-header">
+                                    <h3>Institutional Bitcoin Buying Reaches Fever Pitch</h3>
+                                    <span class="sentiment-badge very-bullish">VERY BULLISH</span>
+                                </div>
+                                <p class="news-summary">Corporate treasuries and hedge funds have purchased over 25,000 BTC in the past week, with MicroStrategy announcing another $2B purchase program as Bitcoin breaks above $120K.</p>
+                                <div class="news-meta">
+                                    <span class="source">The Block</span>
+                                    <span class="impact-score">Impact: <strong>High</strong></span>
+                                    <span class="timestamp">3 hours ago</span>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Chat Assistant View -->
+                <div id="chat-view" class="view">
+                    <header class="content-header">
+                        <h2>AI Assistant</h2>
+                        <span class="connection-status">● Online</span>
+                    </header>
+
+                    <div class="chat-container">
+                        <div class="chat-messages" id="chat-messages">
+                            <div class="message assistant">
+                                <div class="message-content">
+                                    <p>Hello! I'm your CoinPilot AI assistant. I can see Bitcoin just hit $122K! The market is in extreme greed mode. What would you like to know about this historic rally?</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="suggested-questions">
+                            <button class="suggestion-btn" data-question="Should I buy Bitcoin at $122K?">Buy BTC at $122K?</button>
+                            <button class="suggestion-btn" data-question="Is this a bubble or sustainable rally?">Bubble or sustainable?</button>
+                            <button class="suggestion-btn" data-question="Which altcoins will follow BTC?">Best altcoins now?</button>
+                        </div>
+
+                        <div class="chat-input-area">
+                            <input type="text" class="chat-input" placeholder="Ask me about the $122K Bitcoin rally..." id="chat-input">
+                            <button class="btn btn--primary send-btn" id="send-btn">Send</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio View -->
+                <div id="portfolio-view" class="view">
+                    <header class="content-header">
+                        <h2>Portfolio Tracker</h2>
+                        <button class="btn btn--primary" id="add-position-btn">Add Position</button>
+                    </header>
+
+                    <div class="portfolio-content">
+                        <div class="portfolio-overview">
+                            <div class="portfolio-stats">
+                                <div class="stat-card">
+                                    <h3>Total Value</h3>
+                                    <p class="stat-value">$485,230</p>
+                                </div>
+                                <div class="stat-card">
+                                    <h3>24h P&L</h3>
+                                    <p class="stat-value positive">+$28,450 (+6.2%)</p>
+                                </div>
+                                <div class="stat-card">
+                                    <h3>Total P&L</h3>
+                                    <p class="stat-value positive">+$125,680 (+35.0%)</p>
+                                </div>
+                            </div>
+
+                            <div class="portfolio-chart">
+                                <canvas id="portfolioChart" style="position: relative; height: 300px;"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="positions-table">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Asset</th>
+                                        <th>Amount</th>
+                                        <th>Avg Price</th>
+                                        <th>Current Price</th>
+                                        <th>Value</th>
+                                        <th>P&L</th>
+                                        <th>Allocation</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="positions-tbody">
+                                    <tr>
+                                        <td><strong>BTC</strong></td>
+                                        <td>2.5</td>
+                                        <td>$95,000</td>
+                                        <td>$122,079</td>
+                                        <td>$305,198</td>
+                                        <td class="positive">+$67,698 (+28.5%)</td>
+                                        <td>62.9%</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>ETH</strong></td>
+                                        <td>25</td>
+                                        <td>$3,800</td>
+                                        <td>$4,326</td>
+                                        <td>$108,161</td>
+                                        <td class="positive">+$13,161 (+13.9%)</td>
+                                        <td>22.3%</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>SOL</strong></td>
+                                        <td>180</td>
+                                        <td>$160</td>
+                                        <td>$195.50</td>
+                                        <td>$35,190</td>
+                                        <td class="positive">+$6,390 (+22.2%)</td>
+                                        <td>7.3%</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>LINK</strong></td>
+                                        <td>1,000</td>
+                                        <td>$25.00</td>
+                                        <td>$28.40</td>
+                                        <td>$28,400</td>
+                                        <td class="positive">+$3,400 (+13.6%)</td>
+                                        <td>5.9%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Add Position Modal -->
+                    <div class="modal hidden" id="add-position-modal">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3>Add Position</h3>
+                                <button class="modal-close" id="close-modal">&times;</button>
+                            </div>
+                            <form class="add-position-form">
+                                <div class="form-group">
+                                    <label class="form-label">Symbol</label>
+                                    <select class="form-control">
+                                        <option value="BTC">Bitcoin (BTC)</option>
+                                        <option value="ETH">Ethereum (ETH)</option>
+                                        <option value="SOL">Solana (SOL)</option>
+                                        <option value="ADA">Cardano (ADA)</option>
+                                        <option value="AVAX">Avalanche (AVAX)</option>
+                                        <option value="LINK">Chainlink (LINK)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Amount</label>
+                                    <input type="number" class="form-control" step="0.00000001">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Average Price ($)</label>
+                                    <input type="number" class="form-control" step="0.01">
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn--primary">Add Position</button>
+                                    <button type="button" class="btn btn--secondary" id="cancel-add">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trading Signals View -->
+                <div id="signals-view" class="view">
+                    <header class="content-header">
+                        <h2>Trading Signals</h2>
+                        <div class="signal-filters">
+                            <select class="form-control">
+                                <option>All Signals</option>
+                                <option>Strong Buy</option>
+                                <option>Buy</option>
+                                <option>Hold</option>
+                                <option>Sell</option>
+                            </select>
+                        </div>
+                    </header>
+
+                    <div class="signals-grid">
+                        <div class="signal-card">
+                            <div class="signal-header">
+                                <h3>BTC/USDT</h3>
+                                <span class="signal-strength strong-buy">STRONG BUY</span>
+                            </div>
+                            <div class="signal-details">
+                                <div class="signal-levels">
+                                    <div class="level">
+                                        <span class="level-label">Entry:</span>
+                                        <span class="level-price">$120,000 - $123,000</span>
+                                    </div>
+                                    <div class="level">
+                                        <span class="level-label">Stop Loss:</span>
+                                        <span class="level-price">$115,000</span>
+                                    </div>
+                                    <div class="level">
+                                        <span class="level-label">Take Profit:</span>
+                                        <span class="level-price">$135,000</span>
+                                    </div>
+                                </div>
+                                <div class="technical-indicators">
+                                    <span class="indicator">RSI: 68 (Bullish)</span>
+                                    <span class="indicator">MACD: Strong Bull</span>
+                                    <span class="indicator">Volume: Extreme</span>
+                                    <span class="indicator">Pattern: ATH Breakout</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="signal-card">
+                            <div class="signal-header">
+                                <h3>SOL/USDT</h3>
+                                <span class="signal-strength strong-buy">STRONG BUY</span>
+                            </div>
+                            <div class="signal-details">
+                                <div class="signal-levels">
+                                    <div class="level">
+                                        <span class="level-label">Entry:</span>
+                                        <span class="level-price">$190 - $200</span>
+                                    </div>
+                                    <div class="level">
+                                        <span class="level-label">Stop Loss:</span>
+                                        <span class="level-price">$175</span>
+                                    </div>
+                                    <div class="level">
+                                        <span class="level-label">Take Profit:</span>
+                                        <span class="level-price">$240</span>
+                                    </div>
+                                </div>
+                                <div class="technical-indicators">
+                                    <span class="indicator">RSI: 75 (Overbought)</span>
+                                    <span class="indicator">Momentum: Explosive</span>
+                                    <span class="indicator">Volume: Surge +150%</span>
+                                    <span class="indicator">Pattern: Bull Flag</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="signal-card">
+                            <div class="signal-header">
+                                <h3>ETH/USDT</h3>
+                                <span class="signal-strength buy">BUY</span>
+                            </div>
+                            <div class="signal-details">
+                                <div class="signal-levels">
+                                    <div class="level">
+                                        <span class="level-label">Entry:</span>
+                                        <span class="level-price">$4,250 - $4,400</span>
+                                    </div>
+                                    <div class="level">
+                                        <span class="level-label">Stop Loss:</span>
+                                        <span class="level-price">$4,000</span>
+                                    </div>
+                                    <div class="level">
+                                        <span class="level-label">Take Profit:</span>
+                                        <span class="level-price">$5,200</span>
+                                    </div>
+                                </div>
+                                <div class="technical-indicators">
+                                    <span class="indicator">RSI: 62 (Bullish)</span>
+                                    <span class="indicator">Following BTC</span>
+                                    <span class="indicator">Volume: High</span>
+                                    <span class="indicator">Support: Strong</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="paper-trading">
+                        <h3>Paper Trading Performance</h3>
+                        <div class="paper-stats">
+                            <div class="stat">
+                                <span class="stat-label">Virtual Balance:</span>
+                                <span class="stat-value">$50,000</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">P&L:</span>
+                                <span class="stat-value positive">+$18,750 (+37.5%)</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Win Rate:</span>
+                                <span class="stat-value">84%</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Best Trade:</span>
+                                <span class="stat-value positive">BTC +28.5%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
